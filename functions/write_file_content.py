@@ -1,14 +1,14 @@
 import os
 from google.genai import types
 
-def write_file(working_directory, file_path, content):
 
+def write_file(working_directory, file_path, content):
     abs_work_dir = os.path.abspath(working_directory)
 
     abs_file_path = os.path.abspath(os.path.join(working_directory, file_path))
 
     if not abs_file_path.startswith(abs_work_dir):
-        return (f'Error: Cannot write to "{file_path}" as it is outside the permitted working directory')
+        return f'Error: Cannot write to "{file_path}" as it is outside the permitted working directory'
 
     if not os.path.exists(abs_file_path):
         try:
@@ -22,11 +22,10 @@ def write_file(working_directory, file_path, content):
     try:
         with open(abs_file_path, "w") as f:
             f.write(content)
-        return (
-            f'Succesfully wrote to "{file_path}" ({len(content)} characters written)'
-        )
+        return f'Succesfully wrote to "{file_path}" ({len(content)} characters written)'
     except Exception as e:
-        print(f'Error: {e}')
+        print(f"Error: {e}")
+
 
 schema_write_file = types.FunctionDeclaration(
     name="write_file",
@@ -36,15 +35,13 @@ schema_write_file = types.FunctionDeclaration(
         properties={
             "file_path": types.Schema(
                 type=types.Type.STRING,
-                description="The file path to write content to, relative to the working directory."
+                description="The file path to write content to, relative to the working directory.",
             ),
             "content": types.Schema(
                 type=types.Type.STRING,
-                description="Content to be written to the file path."
-            )
+                description="Content to be written to the file path.",
+            ),
         },
-        required=["file_path", "content"]
-    )
+        required=["file_path", "content"],
+    ),
 )
-
-
