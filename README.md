@@ -7,6 +7,8 @@
 ## Description
 
 This project is an experimental AI-powered assistant that brings **agentic IDE-like features** into a simple Python tool.  
+
+
 It uses an LLM with tool calling to:
 
 - Parse and summarize project context (files, errors, tests)  
@@ -14,7 +16,7 @@ It uses an LLM with tool calling to:
 - Run tests and linting to validate changes  
 - Iterate until errors are resolved  
 
-It’s inspired by features found in editors like Cursor, Zed, and Claude Code — but implemented from scratch for educational purposes.
+It’s inspired by features found in editors like Cursor, Zed, and Claude Code, but implemented from scratch for educational purposes.
 
 ---
 
