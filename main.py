@@ -12,7 +12,7 @@ from prompt import system_prompt
 
 def generate_content(messages, client, verbose):
     response = client.models.generate_content(
-        model="gemini-2.0-flash-001",
+        model="gemini-2.5-flash",
         contents=messages,
         # config will hold additional instructions to the model
         config=types.GenerateContentConfig(
@@ -92,7 +92,8 @@ def main():
         try:
             final_response = generate_content(messages, client, verbose)
             if final_response:
-                print("Final response:")
+                print(" ")
+                print("\nFinal response:")
                 print(final_response)
                 break
         except Exception as e:
