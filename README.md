@@ -75,7 +75,7 @@ Then ask the agent to fix bugs or add features to the calculator app.
 
 ## Demo
 
-[Demo video/gif placeholder]
+<video src="https://github.com/user-attachments/assets/42ea0662-f31b-4863-8337-b34abf6afd05" width="600" controls></video>
 
 ## Screenshots
 
