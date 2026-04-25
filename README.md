@@ -1,8 +1,6 @@
 # ai_agent – AI Code-Fixing Agent (TUI)
 
-ai_agent is a Python CLI tool with a Textual-based TUI that uses Google's Gemini API with function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
-
-It brings agentic like features into a simple Python tool for educational purposes.
+ai_agent is a Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
 
 ## Tools and Dependencies
 
@@ -13,6 +11,7 @@ It brings agentic like features into a simple Python tool for educational purpos
 ## Requirements
 
 - Python 3.14+
+- [uv](https://docs.astral.sh/uv/) (Python package manager)
 - Google Gemini API key
 
 ## Install
@@ -52,9 +51,11 @@ Or use the CLI directly:
 python main.py "fix the bug in main.py" [--verbose]
 ```
 
-## Commands
+## Functions
 
-| Command | Description |
+Functions are available to the AI agent via Gemini function calling. The agent uses them automatically when working on your code.
+
+| Function | Description |
 |---------|-------------|
 | `get_files_info` | List files in working directory |
 | `get_file_content` | Read file contents |
