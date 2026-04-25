@@ -1,6 +1,6 @@
-# ai_agent – AI Code-Fixing Agent (TUI)
+# ai_agent
 
-ai_agent is a Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
+ai_agent is am agentic Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
 
 ## Tools and Dependencies
 
