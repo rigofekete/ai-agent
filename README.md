@@ -79,7 +79,7 @@ Then ask the agent to fix bugs or add features to the calculator app.
 
 ## Screenshots
 
-[Photos placeholder]
+<img width="1921" height="1022" alt="Image" src="https://github.com/user-attachments/assets/38d43bd4-b5ee-43b1-8248-336b30a24dfd" />
 
 ## Architecture
 
