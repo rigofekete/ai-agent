@@ -11,14 +11,11 @@ class Calculator:
             "-": 1,
             "*": 2,
             "/": 2,
-            "(": 0,  # Lower precedence for '('
         }
 
     def evaluate(self, expression):
         if not expression or expression.isspace():
             return None
-        # Add spaces around parentheses for easier splitting
-        expression = expression.replace("(", " ( ").replace(")", " ) ")
         tokens = expression.strip().split()
         return self._evaluate_infix(tokens)
 
@@ -27,15 +24,7 @@ class Calculator:
         operators = []
 
         for token in tokens:
-            if token == "(":
-                operators.append(token)
-            elif token == ")":
-                while operators and operators[-1] != "(":
-                    self._apply_operator(operators, values)
-                if not operators or operators[-1] != "(":
-                    raise ValueError("mismatched parentheses")
-                operators.pop()  # Pop '('
-            elif token in self.operators:
+            if token in self.operators:
                 while (
                     operators
                     and operators[-1] in self.operators
@@ -50,8 +39,6 @@ class Calculator:
                     raise ValueError(f"invalid token: {token}")
 
         while operators:
-            if operators[-1] == "(":
-                raise ValueError("mismatched parentheses")
             self._apply_operator(operators, values)
 
         if len(values) != 1:
@@ -69,15 +56,4 @@ class Calculator:
 
         b = values.pop()
         a = values.pop()
-        if operator == "/" and b == 0:
-            raise ValueError("division by zero")
         values.append(self.operators[operator](a, b))
-
-
-if __name__ == "__main__":
-    calculator = Calculator()
-    expression = "3 + 7 * 2"
-    result = calculator.evaluate(expression)
-    print(f"{expression} = {result}")
-    assert result == 17
-    print("All tests passed!")
