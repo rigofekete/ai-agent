@@ -12,7 +12,7 @@ from prompt import system_prompt
 
 def generate_content(messages, client, verbose):
     response = client.models.generate_content(
-        model="gemini-2.0-flash-001",
+        model="gemini-2.5-flash",
         contents=messages,
         # config will hold additional instructions to the model
         config=types.GenerateContentConfig(
@@ -52,9 +52,6 @@ def generate_content(messages, client, verbose):
     if not function_responses:
         raise Exception("no function responses generated, exiting.")
 
-    # we append the wrapped function_responses list as a types.Content because we had to separate the already returned types.
-    # Content object parts from function_call_result into the function_responses list.
-    # We do these wrappings to keep everything consistent in order to help the model to provide more accurate outputs
     messages.append(types.Content(role="tool", parts=function_responses))
 
 
@@ -92,6 +89,7 @@ def main():
         try:
             final_response = generate_content(messages, client, verbose)
             if final_response:
+                print(" ")
                 print("Final response:")
                 print(final_response)
                 break
