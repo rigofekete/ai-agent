@@ -1,15 +1,15 @@
 # ai_agent
 
-ai_agent is am agentic Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
+ai_agent is an agentic Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
 
 ## Tools and Dependencies
 
-- Python
 - Google Gemini API
 - Textual (TUI framework)
 
 ## Requirements
 
+- Linux
 - Python 3.14+
 - [uv](https://docs.astral.sh/uv/) (Python package manager)
 - Google Gemini API key
@@ -39,28 +39,33 @@ GEMINI_API_KEY=your_api_key_here
 
 ## Usage
 
-Run the TUI:
+Run the TUI using uv:
 
 ```bash
-python tui.py
+uv run python tui.py
 ```
 
 Or use the CLI directly:
 
 ```bash
-python main.py "fix the bug in main.py" [--verbose]
+uv run python main.py "fix the bug in main.py" [--verbose]
 ```
 
-## Functions
+### Alternative: Using Virtual Environment
 
-Functions are available to the AI agent via Gemini function calling. The agent uses them automatically when working on your code.
+If you prefer not to use `uv run`, you can activate the virtual environment directly:
 
-| Function | Description |
-|---------|-------------|
-| `get_files_info` | List files in working directory |
-| `get_file_content` | Read file contents |
-| `write_file` | Write/overwrite a file |
-| `run_python_file` | Run a Python file |
+```bash
+source .venv/bin/activate
+python tui.py
+```
+
+Or for the CLI:
+
+```bash
+source .venv/bin/activate
+python main.py "fix the bug in main.py" [--verbose]
+```
 
 ## Example
 
@@ -109,6 +114,13 @@ You can tweak the prompt to change the agent's behavior, priorities, or add new 
 Edit `prompt.py` to customize the agent to your needs.
 
 ## Extensible Design
+
+The agent uses a modular tool interface with these built-in functions available via Gemini function calling:
+
+- `get_files_info` – List files in working directory
+- `get_file_content` – Read file contents
+- `write_file` – Write/overwrite a file
+- `run_python_file` – Run a Python file
 
 Add new tools by:
 
