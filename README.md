@@ -1,6 +1,6 @@
 # ai-agent
 
-ai_agent is an agentic Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
+ai-agent is an agentic Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
 
 ## Tools and Dependencies
 
@@ -17,8 +17,8 @@ ai_agent is an agentic Python tool with a Textual-based TUI that uses Google’s
 ## Install
 
 ```bash
-git clone https://github.com/rigofekete/ai_agent
-cd ai_agent
+git clone https://github.com/rigofekete/ai-agent
+cd ai-agent
 uv sync
 ```
 
