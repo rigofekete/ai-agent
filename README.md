@@ -95,6 +95,8 @@ The agent uses a modular tool interface:
 - `prompt.py` – system prompt that defines the agent's behavior
 - `tui.py` – Textual-based terminal user interface
 
+> **Important Security Note:** All file operations are sandboxed to the working directory. The tools cannot read from or write to any location outside the project root. This ensures the agent operates within a confined scope and cannot access sensitive system files or other directories on your machine.
+
 ## Customizing the Agent Behavior
 
 The `prompt.py` file contains the system prompt that defines how the agent thinks and behaves. It comes pre-configured with instructions for:
