@@ -70,6 +70,9 @@ def main():
         sys.exit(1)
 
     api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY environment variable not set")
+
     client = genai.Client(api_key=api_key)
 
     user_prompt = " ".join(args)
