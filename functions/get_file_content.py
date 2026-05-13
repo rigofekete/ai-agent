@@ -4,9 +4,9 @@ from google.genai import types
 
 
 def get_file_content(working_directory, file_path):
-    abs_work_dir = os.path.abspath(working_directory)
+    abs_work_dir = os.path.realpath(working_directory)
 
-    abs_file_path = os.path.abspath(os.path.join(working_directory, file_path))
+    abs_file_path = os.path.realpath(os.path.join(working_directory, file_path))
 
     if not abs_file_path.startswith(abs_work_dir):
         return f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
@@ -27,7 +27,7 @@ def get_file_content(working_directory, file_path):
         return file_content_string
 
     except Exception as e:
-        print(f"Error: {e}")
+        return f"Error: {e}"
 
 
 schema_get_file_content = types.FunctionDeclaration(

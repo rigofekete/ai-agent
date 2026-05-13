@@ -3,12 +3,12 @@ from google.genai import types
 
 
 def get_files_info(working_directory, directory=None):
-    abs_work_dir = os.path.abspath(working_directory)
+    abs_work_dir = os.path.realpath(working_directory)
 
     target_dir = abs_work_dir
 
     if directory:
-        target_dir = os.path.abspath(os.path.join(working_directory, directory))
+        target_dir = os.path.realpath(os.path.join(working_directory, directory))
 
     if not target_dir.startswith(abs_work_dir):
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
@@ -30,7 +30,7 @@ def get_files_info(working_directory, directory=None):
         return "\n".join(files_info)
 
     except Exception as e:
-        print(f"Error: {e}")
+        return f"Error: {e}"
 
 
 schema_get_files_info = types.FunctionDeclaration(

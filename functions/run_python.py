@@ -4,8 +4,8 @@ from google.genai import types
 
 
 def run_python_file(working_directory, file_path, args=None):
-    abs_work_dir = os.path.abspath(working_directory)
-    abs_file_path = os.path.abspath(os.path.join(working_directory, file_path))
+    abs_work_dir = os.path.realpath(working_directory)
+    abs_file_path = os.path.realpath(os.path.join(working_directory, file_path))
 
     if not abs_file_path.startswith(abs_work_dir):
         return f'Error: Cannot execute "{file_path}" as it is outside the permitted working directory'
@@ -26,19 +26,19 @@ def run_python_file(working_directory, file_path, args=None):
             commands, capture_output=True, text=True, cwd=abs_work_dir, timeout=30
         )
 
-        object = []
+        output = []
 
         if result.stdout:
-            object.append(f"STDOUT:\n{result.stdout}")
+            output.append(f"STDOUT:\n{result.stdout}")
         if result.stderr:
-            object.append(f"STDERR:\n{result.stderr}")
+            output.append(f"STDERR:\n{result.stderr}")
 
         if result.returncode != 0:
-            object.append("Process exited with code:\n{result.returncode}")
+            output.append(f"Process exited with code:\n{result.returncode}")
         if not result.stdout:
-            object.append("No output produced.")
+            output.append("No output produced.")
 
-        return "\n".join(object)
+        return "\n".join(output)
 
     except Exception as e:
         return f"Error: executing Python file: {e}"
