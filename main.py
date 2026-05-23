@@ -82,22 +82,19 @@ def main():
 
     messages = [types.Content(role="user", parts=[types.Part(text=user_prompt)])]
 
-    iters = 0
-    while True:
-        iters += 1
-        if iters > MAX_ITERS:
-            print(f"Maximum iterations ({MAX_ITERS}) reached.")
-            sys.exit(1)
-
+    for _ in range(MAX_ITERS):
         try:
             final_response = generate_content(messages, client, verbose)
             if final_response:
                 print(" ")
                 print("Final response:")
                 print(final_response)
-                break
+                return
         except Exception as e:
             print(f"Error in generate_content: {e}")
+
+    print(f"Maximum iterations ({MAX_ITERS}) reached.")
+    sys.exit(1)
 
 
 if __name__ == "__main__":
