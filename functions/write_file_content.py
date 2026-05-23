@@ -20,7 +20,7 @@ def write_file(working_directory, file_path, content):
         return f'Error: "{file_path}" is a directory, not a file'
 
     try:
-        with open(abs_file_path, "w") as f:
+        with open(abs_file_path, "w", encoding="utf-8") as f:
             f.write(content)
         return f'Succesfully wrote to "{file_path}" ({len(content)} characters written)'
     except Exception as e:
