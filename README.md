@@ -1,6 +1,8 @@
 # ai-agent
 
-ai-agent is an agentic Python tool with a Textual-based TUI that uses Google’s Gemini API and function calling to analyze Python repositories, detect bugs, and propose or apply fixes.
+ai-agent is a **harness** with a Textual-based TUI that connects Google's Gemini API to your codebase through an extensible, sandboxed function-calling interface. It enables Gemini to analyze, edit, and run Python code within a controlled environment.
+
+Gemini provides the LLM for reasoning and generation, while this project provides the harness that handles function calling and execution.
 
 ## Tools and Dependencies
 
@@ -88,7 +90,7 @@ Then ask the agent to fix bugs or add features to the calculator app.
 
 ## Architecture
 
-The agent uses a modular tool interface:
+The harness uses a modular tool interface:
 
 - `call_function.py` – dispatches function calls to the appropriate handler
 - `functions/` – directory containing tool implementations
